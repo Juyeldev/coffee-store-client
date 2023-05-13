@@ -1,30 +1,28 @@
-import { Link, useLoaderData } from 'react-router-dom'
-import './App.css'
-import CoffeeCard from './component/CoffeeCard';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
+import ChocolateCard from './component/ChocolateCard';
 
-function App() {
-  const loadedCoffees = useLoaderData();
-  const [coffees, setCoffees]= useState(loadedCoffees);
-
-
+const App = () => {
+  const loadedChocolates = useLoaderData();
+  const [chocolates, setChocolates] = useState(loadedChocolates)
   return (
-    <div className='m-20'>
+    <div className='lg:container mx-auto'>
+      <h1 className='text-4xl text-center font-bold bg-purple-500 w-25 rounded p-4 mb-4'>Chocolate Management System</h1>
+      <button className='bg-slate-300 p-2  my-5 rounded '><Link to='/addChocolate'>Add Chocolate</Link></button>
+      <div>
 
-      <h1 className='text-6xl text-center my-20 text-purple-600'>Hot Cold Coffee Store: {coffees.length} </h1>
-      <div className='grid md:grid-cols-2 gap-4'>
         {
-          coffees.map(coffee => <CoffeeCard
-            key={coffee._id}
-            coffee={coffee}
-            coffees={coffees}
-            setCoffees={setCoffees}
-            ></CoffeeCard>)
+          chocolates.map(chocolate => <ChocolateCard
+            key={chocolate._id}
+            chocolate={chocolate}
+            chocolates={chocolates}
+            setChocolates={setChocolates}
+            ></ChocolateCard>)
         }
       </div>
-      <Link to='/addCoffee'><button className='btn btn-primary text-center'> Go Add Coffee</button></Link>
-    </div>
-  )
-}
 
-export default App
+    </div>
+  );
+};
+
+export default App;

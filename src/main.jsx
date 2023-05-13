@@ -2,29 +2,33 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
+
+
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import AddCoffee from './component/AddCoffee.jsx';
-import UpdateCoffee from './component/UpdateCoffee.jsx';
+import AddChocolate from './component/AddChocolate.jsx';
+import UpdateChocolate from './component/UpdateChocolate.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    loader:()=> fetch('http://localhost:5000/coffee')
+    loader: ()=> fetch('http://localhost:5000/chocolate')
+  
   },
   {
-    path: '/addCoffee',
-    element: <AddCoffee></AddCoffee>
+    path: "/addChocolate",
+    element: <AddChocolate></AddChocolate>
   },
   {
-    path: "updateCoffee/:id",
-    element: <UpdateCoffee></UpdateCoffee>,
-   loader: ({params})=> fetch(`http://localhost:5000/coffee/${params.id}`)
+    path: "/updateChocolate/:id",
+    element: <UpdateChocolate></UpdateChocolate>,
+    loader: ({params})=> fetch(`http://localhost:5000/chocolate/${params.id}`)
   }
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
